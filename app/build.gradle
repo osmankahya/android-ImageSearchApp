@@ -44,6 +44,7 @@ android {
 
 dependencies {
     // Default dependencies
+    //noinspection GradleCompatible
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
     implementation "androidx.core:core-ktx:$ktxVersion"
