@@ -8,7 +8,19 @@
             <LayoutPositions>
               <option name="myPositions">
                 <map>
-                  <entry key="galleryFragment2">
+                  <entry key="detailsFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="288" />
+                            <option name="y" value="39" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="galleryFragment">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">

@@ -9,13 +9,15 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.observe
+import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import com.okahya.imagesearchapp.R
+import com.okahya.imagesearchapp.data.UnsplashPhoto
 import com.okahya.imagesearchapp.databinding.FragmentGalleryBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class GalleryFragment:  Fragment(R.layout.fragment_gallery) {
+class GalleryFragment:  Fragment(R.layout.fragment_gallery), UnsplashPhotoAdapter.OnItemClickListener {
 
     private val viewModel by viewModels<GalleryViewModel>()
 
@@ -27,7 +29,7 @@ class GalleryFragment:  Fragment(R.layout.fragment_gallery) {
 
         _binding = FragmentGalleryBinding.bind(view)
 
-        val adapter = UnsplashPhotoAdapter()
+        val adapter = UnsplashPhotoAdapter(this)
         binding.apply {
             recyclerView.setHasFixedSize(true)
             recyclerView.itemAnimator = null
@@ -64,6 +66,11 @@ class GalleryFragment:  Fragment(R.layout.fragment_gallery) {
         }
 
         setHasOptionsMenu(true)
+    }
+
+    override fun onItemClick(photo: UnsplashPhoto) {
+        val action = GalleryFragmentDirections.actionGalleryFragmentToDetailsFragment(photo)
+        findNavController().navigate(action)
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
